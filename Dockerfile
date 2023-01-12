@@ -32,7 +32,6 @@ COPY --from=ts-compiler /usr/app/prisma ./
 RUN yarn
 
 RUN npx prisma generate
-RUN npx prisma migrate dev
 
 FROM node:16-bullseye
 
@@ -52,4 +51,4 @@ COPY --from=ts-remover /usr/app ./
 
 EXPOSE 3000
 
-CMD ["yarn", "run", "start:prod"]
+CMD ["yarn", "run", "start:migrate:prod"]
