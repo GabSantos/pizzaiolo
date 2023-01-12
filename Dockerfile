@@ -32,6 +32,7 @@ COPY --from=ts-compiler /usr/app/prisma ./
 RUN yarn
 
 RUN npx prisma generate
+RUN npx prisma migrate dev
 
 FROM node:16-bullseye
 
