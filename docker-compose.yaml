@@ -2,14 +2,15 @@ version: '3.9'
 
 services:
   pizzaiolo:
-    # image: gabsantos/pizzaa
     image: ghcr.io/gabsantos/pizzaiolo
     container_name: pizzaiolo
     restart: unless-stopped
     environment:
-        SLACK_TOKEN: 'xoxe.xoxp-1-Mi0yLTM4MTY2MDc5NzQ4ODctMzg0Mzg0MDY3NzI5Ny00NjI2NTcyMjExNTcxLTQ2MjY2OTAzNjA0OTgtNGU2ZWEzOGI2MTc2NWE0NzY5MDNkZDg4ZjkwZGU1M2U1MjYzOWE2NjI1OTMyY2M1ODkxYTI2OTM5Y2I3NWQ1Nw'
-        SLACK_CHANNEL: 'geral'
-        DATABASE_URL: 'database/pizzaiolo.db'
-        GITHUB_WEBHOOK_SECRET: 'pipipipopopo'
+      - SLACK_TOKEN=YOUR_SLACK_TOKEN
+      - SLACK_CHANNEL=YOUR_SLACK_CHANNEL
+      - DATABASE_URL=file:sqlite/pizzaiolo.db
+      - GITHUB_WEBHOOK_SECRET=YOUR_GITHUB_SECRET
     ports:
       - 3000:3000
+    volumes:
+      - ./data:/usr/app/sqlite # Your database path
