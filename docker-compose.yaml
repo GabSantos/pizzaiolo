@@ -6,12 +6,11 @@ services:
     container_name: pizzaiolo
     restart: unless-stopped
     environment:
-      - DATABASE_URL=file:sqlite/pizzaiolo.db
-      - SLACK_TOKEN=YOUR_SLACK_TOKEN
-      - SLACK_CHANNEL=YOUR_SLACK_CHANNEL
-      - GITHUB_WEBHOOK_SECRET=YOUR_GITHUB_SECRET
+      DATABASE_URL: ${DATABASE_URL}
+      SLACK_TOKEN: ${SLACK_TOKEN}
+      SLACK_CHANNEL: ${SLACK_CHANNEL}
+      GITHUB_WEBHOOK_SECRET: ${GITHUB_SECRET}
     ports:
       - 3000:3000
     volumes:
-      # ./local/folder:/usr/app/your/database/url
       - ./data:/usr/app/sqlite
